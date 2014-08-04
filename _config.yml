@@ -1,0 +1,12 @@
+title:        knownSubset
+tagline:      'Hyde, a Jekyll theme'
+description:  'A polygot programmer doing web stuff'
+url:          http://knownSubset.github.io
+version:      1.1.1
+author:
+  name:       'Nathan Dauber'
+  email:      'nathan@radialogica.com'
+markdown:     rdiscount
+permalink:    pretty
+highlighter:  true
+paginate:     5
