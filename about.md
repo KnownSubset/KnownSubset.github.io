@@ -15,7 +15,6 @@ permalink: /about/
   <hr>
 
   <h2>About the site</h2>
-  <p>This URL has been my online home for many years, manifesting at times as a blog or a portfolio until landing on this current single-column blog. Today it is an outlet for my design- and development-related ramblings.</p>
   <p>Some fun facts about the site include:</p>
   <ul>
     <li>Designed and coded on a pile of bytes in the STL</li>
