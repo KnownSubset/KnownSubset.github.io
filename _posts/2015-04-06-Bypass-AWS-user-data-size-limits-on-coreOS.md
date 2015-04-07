@@ -3,9 +3,15 @@ layout: post
 title: Bypassing the AWS 16KB user-data limit for CloudInit on CoreOS
 ---
 
-The [AWS docs](https://coreos.com/docs/running-coreos/cloud-providers/ec2/#cloud-config) for CoreOS will get you set up quickly. We are supposed to be able to pass in our cloud config via the page or aws-cli like the following.  The cloud-config can quickly blow out to being a large file if you need to write out a bunch of files.  
+The [AWS docs](https://coreos.com/docs/running-coreos/cloud-providers/ec2/#cloud-config) for CoreOS will get you set up quickly. Using CoreOS's example shows that we can pass in our cloud config via the page like they show in the docs or by using aws-cli.  
 
+``` shell
+aws ec2 run-instances --image-id ami-323b195a ... --user-data file://cloud-config.yaml
 ```
+
+The cloud-config can quickly blow out to being a large file if you need to write out a bunch of files.
+
+``` yaml
 #cloud-config
 
 coreos:
@@ -73,10 +79,15 @@ coreos:
 
 ```
 
-However, when trying to boot an EC2 instance with a complicated cloud-config you will probably run into a limitation within AWS of the [user-data being limited to 16KB](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).  _The documents seem to be wrong as I was unable to send up user-data in any format that was larger than 16KB._  Now you can log into the instance and manually setup the machine or use some other system setup tool, but that is extra work that I would rather have coreos-cloudinit accomplish for me.  
-To get around the limitation, I set up a systemd service to run that will download and run the real cloud-config via coreos-cloudinit.
+However, when trying to boot an EC2 instance with a complicated cloud-config you will probably run into a limitation within AWS of the [user-data being limited to 16KB](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).  _The documents seem to be wrong as I was unable to send up user-data in any format that was larger than 16KB._ Once you hit this wall all AWS will tell you is:
 
 ```
+A client error (InvalidParameterValue) occurred when calling the RunInstances operation: User data is limited to 16384 bytes
+```
+
+Now you can log into the instance and manually setup the machine or use some other system setup tool, but that is extra work that I would rather have coreos-cloudinit accomplish for me. To get around the limitation, I set up a systemd service to run that will download and run the real cloud-config via coreos-cloudinit.
+
+``` yaml
 #cloud-config
 
 coreos:
@@ -94,3 +105,5 @@ coreos:
         Type=oneshot
 
 ```
+
+You need the environment file to be loaded as it will supply the public and private ip addresses that coreos-cloudinit uses to do the substitutions for $public_ipv4 and $private_ipv4.
