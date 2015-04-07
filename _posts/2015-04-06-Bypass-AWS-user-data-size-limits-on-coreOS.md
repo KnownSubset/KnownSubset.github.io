@@ -38,43 +38,45 @@ coreos:
 
         [X-Fleet]
         Global=true
-        - path: /etc/ssl/certs/site.com.key
-          permissions: 0440
-          owner: root
-          content: |
-            -----BEGIN RSA PRIVATE KEY-----
-            bloggy blog blog
-            -----END RSA PRIVATE KEY-----
-        - path: /etc/ssl/certs/ca.crt
-          permissions: 0440
-          owner: root
-          content: |
-            -----BEGIN CERTIFICATE-----
-            bloggy blog blog
-            -----END CERTIFICATE-----
-            -----BEGIN CERTIFICATE-----
-            bloggy blog blog
-            -----END CERTIFICATE-----
-            -----BEGIN CERTIFICATE-----
-            bloggy blog blog
-            -----END CERTIFICATE-----
-        - path: /etc/ssl/certs/site.com.crt
-          permissions: 0440
-          owner: root
-          content: |
-            -----BEGIN CERTIFICATE-----
-            bloggy blog blog
-            -----END CERTIFICATE-----
-        - path: /etc/ssl/certs/site.com.pem
-          permissions: 0440
-          owner: root
-          content: |
-            -----BEGIN RSA PRIVATE KEY-----
-            bloggy blog blog
-            -----END RSA PRIVATE KEY-----
-            -----BEGIN CERTIFICATE-----
-            bloggy blog blog
-            -----END CERTIFICATE-----
+
+write_files:
+  - path: /etc/ssl/certs/site.com.key
+    permissions: 0440
+    owner: root
+    content: |
+      -----BEGIN RSA PRIVATE KEY-----
+      bloggy blog blog
+      -----END RSA PRIVATE KEY-----
+  - path: /etc/ssl/certs/ca.crt
+    permissions: 0440
+    owner: root
+    content: |
+      -----BEGIN CERTIFICATE-----
+      bloggy blog blog
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      bloggy blog blog
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      bloggy blog blog
+      -----END CERTIFICATE-----
+  - path: /etc/ssl/certs/site.com.crt
+    permissions: 0440
+    owner: root
+    content: |
+      -----BEGIN CERTIFICATE-----
+      bloggy blog blog
+      -----END CERTIFICATE-----
+  - path: /etc/ssl/certs/site.com.pem
+    permissions: 0440
+    owner: root
+    content: |
+      -----BEGIN RSA PRIVATE KEY-----
+      bloggy blog blog
+      -----END RSA PRIVATE KEY-----
+      -----BEGIN CERTIFICATE-----
+      bloggy blog blog
+      -----END CERTIFICATE-----
 
 
 ```
