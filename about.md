@@ -10,7 +10,7 @@ permalink: /about/
   <h1 class="page-title">About</h1>
 
   <p>Nathan Dauber is a software craftsman living and working in St. Louis. He joined Radialogica as a contractor while attending Washington University in St. Louis for his M.S. in Computer Science. After completion of his degree he joined Radialogica full-time and began leading their web technologies efforts.</p>
-  <p>Since joining Radialogica, Nathan has worked on numerous projects including <a href="http://radialogica.com/fullaccess-overview.php">fullAccess</a>, <a href="http://radialogica.com/features/f-analyze-ng.php">fullReport</a>, and several internal tools.</p>
+  <p>Since joining Radialogica, Nathan has worked on numerous projects including <a href="http://radialogica.com/solutions">fullAccess, fullReport</a>, and several internal tools. He has been leading the development efforts focused on <a href="http://radialogica.com/index.html">Oncology Informatics</a>.</p>
 
   <hr>
 
